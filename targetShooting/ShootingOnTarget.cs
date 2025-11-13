@@ -33,7 +33,8 @@ namespace targetShooting
                     y += shotDisturbanceY;
                     radiusSquared = (x - targetMoveX) * (x - targetMoveX) + (y - targetMoveY) * (y - targetMoveY);
 
-                    Console.WriteLine("xc {0}, yc {1}, xs {2}, ys {3}", targetMoveX, targetMoveY, x, y);
+                    Console.WriteLine("Target center is at ({0},{1}). Disturbance of shooting is ({2},{3})", 
+                        targetMoveX, targetMoveY, shotDisturbanceX, shotDisturbanceY);
 
                     if (radiusSquared <= 1)
                     {
