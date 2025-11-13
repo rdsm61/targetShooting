@@ -2,11 +2,7 @@
 
 namespace targetShooting
 {
-    enum PointsOnTarget
-    {
-        zone1 = 10, zone2 = 5, zone3 = 1, zone4 = 0
-    };
-
+ 
     class ShootingOntarget
     {
         static void Main(string[] args)
@@ -17,7 +13,6 @@ namespace targetShooting
             double sumPoints = 0;
             string temp;
             double x, y, radiusSquared;
-            PointsOnTarget points = PointsOnTarget.zone4;
             Random rnd = new Random();
     
             int targetMoveX = rnd.Next(-targetMoveRadius, targetMoveRadius);
@@ -38,26 +33,20 @@ namespace targetShooting
                     y += shotDisturbanceY;
                     radiusSquared = (x - targetMoveX) * (x - targetMoveX) + (y - targetMoveY) * (y - targetMoveY);
 
-                    Console.WriteLine("xc {0}, yc {1}, xs {2}, xs {3}", targetMoveX, targetMoveY, x, y);
+                    Console.WriteLine("xc {0}, yc {1}, xs {2}, ys {3}", targetMoveX, targetMoveY, x, y);
 
                     if (radiusSquared <= 1)
                     {
-                        points = PointsOnTarget.zone1;
+                        sumPoints += 10;
                     }
                     else if (radiusSquared <= 4)
                     {
-                        points = PointsOnTarget.zone2;
+                        sumPoints += 5;
                     }
                     else if (radiusSquared <= 9)
                     {
-                        points = PointsOnTarget.zone3;
+                        sumPoints += 1;
                     }
-                    else
-                    {
-                        points = PointsOnTarget.zone4;
-                    }
-
-                    sumPoints += (double)points;
 
                     targetMoveX = rnd.Next(-targetMoveRadius, targetMoveRadius);
                     targetMoveY = rnd.Next(-targetMoveRadius, targetMoveRadius);
